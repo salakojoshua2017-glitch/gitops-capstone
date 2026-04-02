@@ -47,3 +47,9 @@ def test_reverse_palindrome(client):
     """Additional test: reversing a palindrome returns the same string."""
     res = client.post('/reverse-string', json={"text": "racecar"})
     assert res.get_json()["result"] == "racecar"
+
+
+def test_sum_with_floats(client):
+    """Additional test: sum endpoint handles float values."""
+    res = client.post('/sum', json={"a": 1.5, "b": 2.5})
+    assert res.get_json()["result"] == 4.0
